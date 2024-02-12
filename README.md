@@ -1,4 +1,4 @@
-# AsynMQTT
+# AsyncMQTT
 
 MQTT asynchronous client for esp8266 and esp32
 Cliente de MQTT asincrono para esp8266 y esp32.
