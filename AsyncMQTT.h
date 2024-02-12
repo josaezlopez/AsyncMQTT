@@ -15,7 +15,7 @@
 #include <map>
 
 struct tema{
-    std::string tema;
+    //std::string tema;
     std::string ultimoEstado;
 
 };
@@ -29,8 +29,13 @@ class AsyncMQTT{
         void subscribe(std::string topic);
         void subscribeAll();
         void begin(const char* _ssid,const char* _passwitfi);
+        bool isPublishReceived();
+        std::map<std::string, tema> getTopics() { return temas; }
+        std::string valueReceived;
+        std::string topicReceived;
+
     private:
-        std::string buffer;
+        bool publishReceived = false;
         void setCallback();
         const char* usuario;
         const char* password;

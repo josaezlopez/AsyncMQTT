@@ -30,9 +30,11 @@ bool AsyncMQTT::WiFiConnect(const char* _ssid, const char* _wifiPassword){
 void AsyncMQTT::setCallback(){
     client->setCallback(
         [this](char* topic, byte* payload, unsigned int length) {
-            buffer.assign((char*)payload,length);
-            Serial.printf("Recibido %s = %s\r\n",topic,buffer.c_str());
-            temas[topic].ultimoEstado = buffer;
+            valueReceived.assign((char*)payload,length);
+            topicReceived.assign(topic);
+            //Serial.printf("Recibido %s = %s\r\n",topic,valueReceived.c_str());
+            temas[topic].ultimoEstado = valueReceived;
+            publishReceived = true;
         }
     );
 }
@@ -98,12 +100,12 @@ void AsyncMQTT::subscribeAll(){
 void AsyncMQTT::subscribe(std::string topic){
 
     if (auto search = temas.find(topic); search != temas.end()){
-       Serial.printf("Ya está suscrito a %s\r\n",topic);
+       //Serial.printf("Ya está suscrito a %s\r\n",topic);
     }
     else{
-        Serial.printf("Suscribiendo a %s\r\n",topic.c_str());
+        //Serial.printf("Suscribiendo a %s\r\n",topic.c_str());
         tema nuevoTema;
-        nuevoTema.tema = topic;
+        //nuevoTema.tema = topic;
         nuevoTema.ultimoEstado = "";
         temas.insert ( std::pair<std::string,tema>(topic,nuevoTema) );
         client->subscribe(topic.c_str());
@@ -123,4 +125,8 @@ return false;
 }
 
 
-    
+bool AsyncMQTT::isPublishReceived(){
+    bool status = publishReceived;
+    publishReceived =false;
+    return status;
+}    
