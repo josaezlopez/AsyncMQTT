@@ -1,6 +1,6 @@
 {
     "name": "AsyncMQTT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": " MQTT client for ESP8266 and ESP32. Based on PubSubClient",
     "keywords": "arduino, MQTT, esp32, esp8266, Asynchronous",
     "repository":
