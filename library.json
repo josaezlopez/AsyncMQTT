@@ -1,6 +1,6 @@
 {
     "name": "AsyncMQTT",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": " MQTT client for ESP8266 and ESP32. Based on PubSubClient",
     "keywords": "arduino, MQTT, esp32, esp8266, Asynchronous",
     "repository":
@@ -19,8 +19,11 @@
     "license": "MIT",
     "homepage": "https://github.com/josaezlopez/AsyncMQTT",
     "dependencies": {
-      "arduino-libraries/pubsubclient": "^2.8"
+      "name": "external-repo",
+      "version": "https://github.com/knolleary/pubsubclient#^2.8"
     },
     "frameworks": "arduino",
     "platforms": "espressif32, espressif8266"
   }
+
+  
