@@ -130,3 +130,20 @@ bool AsyncMQTT::isPublishReceived(){
     publishReceived =false;
     return status;
 }    
+
+bool AsyncMQTT::publish(const char* topic, const char* payload){
+    return client->publish(topic,payload);
+    }
+
+bool AsyncMQTT::publish(const char* topic, const char* payload, boolean retained) {
+    return client->publish(topic,(const uint8_t*) payload, retained);
+    }
+
+bool AsyncMQTT::publish(const char* topic, const uint8_t* payload, unsigned int plength) {
+    return client->publish(topic, payload, plength, false);
+    }
+
+bool AsyncMQTT::publish(const char* topic, const uint8_t* payload, unsigned int plength, boolean retained) {
+    return client->publish(topic, payload, plength, retained);
+    }
+

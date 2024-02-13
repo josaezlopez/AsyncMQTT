@@ -30,6 +30,10 @@ class AsyncMQTT{
         void subscribeAll();
         void begin(const char* _ssid,const char* _passwitfi);
         bool isPublishReceived();
+        bool publish(const char* topic, const char* payload);
+        bool publish(const char* topic, const char* payload, boolean retained);
+        bool PubSubClient::publish(const char* topic, const uint8_t* payload, unsigned int plength);
+        bool publish(const char* topic, const uint8_t* payload, unsigned int plength, boolean retained);
         std::map<std::string, tema> getTopics() { return temas; }
         std::string valueReceived;
         std::string topicReceived;
